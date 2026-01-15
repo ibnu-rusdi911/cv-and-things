@@ -7,6 +7,25 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // ✅ TAMBAH INI
+  webpack: (config, { isServer }) => {
+    // Untuk handle ES modules
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+    }
+    
+    // Untuk library yang pakai import.meta
+    config.module.rules.push({
+      test: /\.js$/,
+      resolve: {
+        fullySpecified: false,
+      },
+    })
+    
+    return config
+  },
   
   // Jika ada masalah build di Vercel, baru aktifkan ini:
   eslint: {
