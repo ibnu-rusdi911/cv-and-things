@@ -264,7 +264,7 @@ export default function RandomNamePickerPage() {
           </div>
 
           <div>
-            <Card className="mb-6 text-center" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Card className="mb-6 text-center min-h-[300px] flex flex-col justify-center">
               <h2 className="text-xl font-semibold mb-6" style={{ color: darkMode ? '#E6E6E6' : '#3A3A3A' }}>
                 🎉 {t.winner}
               </h2>

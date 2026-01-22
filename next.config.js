@@ -1,62 +1,32 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // ✅ Biarkan Next.js decide yang terbaik
-  // output: 'export', // ❌ JANGAN
   
-  images: {
-    unoptimized: true,
+  // Exclude ONNX Runtime from SWC compilation
+  experimental: {
+    swcPlugins: [],
+    esmExternals: 'loose',
   },
-
-  // ✅ TAMBAH INI
+  
   webpack: (config, { isServer }) => {
-    // Untuk handle ES modules
-    config.experiments = {
-      ...config.experiments,
-      topLevelAwait: true,
-    }
+    // Ignore ONNX Runtime node bindings
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'onnxruntime-node': false,
+    };
     
-    // Untuk library yang pakai import.meta
+    // Fix for @imgly/background-removal
     config.module.rules.push({
-      test: /\.js$/,
-      resolve: {
-        fullySpecified: false,
-      },
-    })
-    
-    return config
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
+    return config;
   },
   
-  // Jika ada masalah build di Vercel, baru aktifkan ini:
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  
-  // Untuk security headers (optional)
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-    ];
-  },
+  // Transpile specific packages
+  transpilePackages: ['@imgly/background-removal'],
 }
 
 module.exports = nextConfig
