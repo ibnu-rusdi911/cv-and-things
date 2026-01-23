@@ -1,4 +1,4 @@
-import { Users,Hash,Key,ImageIcon,QrCode,FileJson } from 'lucide-react';
+import { Users,Hash,Key,ImageIcon,QrCode,FileJson, Clock } from 'lucide-react';
 
 export const toolsList = {
   id: [
@@ -43,6 +43,13 @@ export const toolsList = {
       description: "Format, validate, minify JSON dengan mudah. Dilengkapi statistik dan error detection.",
       icon: FileJson,
       available: true
+    },
+    {
+      id: "timer",
+      name: "Timer & Countdown",
+      description: "Pomodoro timer, countdown, dan stopwatch dengan fullscreen support.",
+      icon: Clock,
+      available: true
     }
   ],
   en: [
@@ -86,6 +93,13 @@ export const toolsList = {
       name: "JSON Formatter",
       description: "Format, validate, minify JSON easily. With statistics and error detection.",
       icon: FileJson,
+      available: true
+    },
+    {
+      id: "timer",
+      name: "Timer & Countdown",
+      description: "Pomodoro timer, countdown, and stopwatch with fullscreen support.",
+      icon: Clock,
       available: true
     }
   ]
