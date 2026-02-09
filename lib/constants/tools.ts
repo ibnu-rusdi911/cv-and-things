@@ -1,4 +1,4 @@
-import { Users,Hash,Key,ImageIcon,QrCode,FileJson, Clock } from 'lucide-react';
+import { Users,Hash,Key,ImageIcon,QrCode,FileJson, Clock, Shield } from 'lucide-react';
 
 export const toolsList = {
   id: [
@@ -50,6 +50,13 @@ export const toolsList = {
       description: "Pomodoro timer, countdown, dan stopwatch dengan fullscreen support.",
       icon: Clock,
       available: true
+    },
+    {
+      id: "jwt-decoder",
+      name: "JWT Decoder",
+      description: "Decode dan analisis JSON Web Token (JWT) dengan detail lengkap.",
+      icon: Shield,
+      available: true
     }
   ],
   en: [
@@ -100,6 +107,13 @@ export const toolsList = {
       name: "Timer & Countdown",
       description: "Pomodoro timer, countdown, and stopwatch with fullscreen support.",
       icon: Clock,
+      available: true
+    },
+    {
+      id: "jwt-decoder",
+      name: "JWT Decoder",
+      description: "Decode and analyze JSON Web Token (JWT) with full details.",
+      icon: Shield,
       available: true
     }
   ]
